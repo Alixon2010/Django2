@@ -1,0 +1,25 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}
+    Task
+{% endblock %}
+
+{% block content %}
+    <h2>Vazifalar {{ count_completed }}/{{ tasks.count }}</h2>
+    <a class="btn btn-outline-secondary" href="{% url 'add' %}">+Vazifa qo'shish</a>
+    <ul>
+        {% for task in tasks %}
+            <div class="task task{{ task.id }}">
+                <li>{{ task.title }}</li>
+                {% if task.is_completed %}
+                    <a href="{% url "edit" task.id %}" class="btn btn-outline-danger">Yangilash</a>
+                    <p>✅</p>
+                {% else %}
+                    <p>❌</p>
+                    <a href="{% url "complete" task.id %}" class="btn btn-outline-success">Bajarildi✅</a>
+                    <a href="{% url "edit" task.id %}" class="btn btn-outline-success">Yangilash</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -8,9 +8,6 @@ from todo.models import Task
 
 @login_required
 def home(request):
-    # context = {
-    #     'tasks': Task.objects.filter(user=request.user),
-    # }
     context = {
         'tasks': Task.objects.filter(user=request.user),
         'count_completed': Task.objects.filter(is_completed=True, user=request.user).count()

@@ -64,7 +64,7 @@ def edit(request, task_id):
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task_object)
         if form.is_valid():
-            form.save(commit=False)
+            form.save()
             return redirect('home')
 
     return render(request, 'todo/edit.html', context={'form': form, 'task': task_object})
@@ -128,6 +128,7 @@ def change_profile(request):
         
     return render(request, 'user/profile_change.html', {'u_form': u_form, 'p_form': p_form, 'profile': profile})
 
+@login_required
 def all_tasks(request):
     if request.user.has_group('Admin'):
         tasks = Task.objects.all()

@@ -1,6 +1,16 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+NAME=os.getenv("DB_NAME")
+USER=os.getenv("DB_USER")
+PASSWORD=os.getenv("PASSWORD")
+HOST=os.getenv("HOST")
+PORT=os.getenv("PORT")
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -12,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$q)34vfu=w^mnvqi@ye5-#r=r1qj4r+j!cxr7-h^rve3u(ppfr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -66,8 +76,12 @@ WSGI_APPLICATION = 'root.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': NAME,
+        'USER': USER,
+        'PASSWORD': PASSWORD,
+        'HOST': HOST,  # или хост сервера (например, db.render.com)
+        'PORT': PORT,       # стандартный порт PostgreSQL
     }
 }
 

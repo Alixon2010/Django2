@@ -10,6 +10,8 @@ USER=os.getenv("DB_USER")
 PASSWORD=os.getenv("PASSWORD")
 HOST=os.getenv("HOST")
 PORT=os.getenv("PORT")
+HOST_PASSWORD=os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL=os.getenv("EMAIL")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +26,7 @@ SECRET_KEY = 'django-insecure-$q)34vfu=w^mnvqi@ye5-#r=r1qj4r+j!cxr7-h^rve3u(ppfr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django2-4d1z.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -141,8 +143,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'djamalxanovalixon8@gmail.com'
-EMAIL_HOST_PASSWORD = 'acscvnszjqpybtdn'
+EMAIL_HOST_USER = EMAIL
+EMAIL_HOST_PASSWORD = HOST_PASSWORD
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

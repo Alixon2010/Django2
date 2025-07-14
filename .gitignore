@@ -42,3 +42,5 @@ Thumbs.db
 
 # Render / Deploy
 build/
+
+EMAIL_HOST_PASSWORD=""

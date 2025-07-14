@@ -3,7 +3,11 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
     username = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(unique=True)
 
+    def has_group(self, group_name):
+        return self.groups.filter(name=group_name).exists()
+    
     def __str__(self):
         return self.username
 
@@ -20,4 +24,10 @@ class Task(models.Model):
     def __str__(self):
         return self.title
 
+class Profile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='profile_img/', null=True, blank=True, default='img/default.jpg')
+
+    def __str__(self):
+        return f"{self.user.username}"
 

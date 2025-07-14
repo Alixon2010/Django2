@@ -1,11 +1,11 @@
-{% extends 'todo/base.html' %}
+{%extends 'todo/base.html'%}
 
-{% block title %}
-    Task
-{% endblock %}
+{%block Title%}
+  All Tasks
+{%endblock%}
 
 {% block content %}
-    <h2>Vazifalar {{ count_completed }}/{{ tasks.count }}</h2>
+  <h2>Vazifalar {{ count_completed }}/{{ tasks.count }}</h2>
     <a class="btn btn-outline-secondary" href="{% url 'add' %}">+Vazifa qo'shish</a>
     <ul class="task-list">
         {% for task in tasks %}
@@ -29,9 +29,11 @@
                 {%endif%}
                     <a href="{% url 'edit' task.id %}" class="btn btn-outline-secondary btn-sm">Yangilash</a>
                 </div>
+                <small>{{task.user.username}}</small>
             </li>
         {% empty %}
             <li>Vazifalar yo'q</li>
         {% endfor %}
     </ul>
-{% endblock %}
+{% endblock content %}
+

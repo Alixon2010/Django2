@@ -383,6 +383,65 @@ html {
     height: 225px;
 }
 
+.task-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 0;
+    margin: 32px 0 0 0;
+    list-style: none;
+    justify-content: flex-start;
+}
+
+.task-card {
+    background: linear-gradient(120deg, #232526 0%, #283e51 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #1e3c7233;
+    padding: 24px 20px 18px 20px;
+    min-width: 260px;
+    max-width: 340px;
+    flex: 1 1 260px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+    animation: fadeInUp 0.7s;
+}
+
+.task-card:hover {
+    box-shadow: 0 8px 32px #2196f399;
+    transform: translateY(-6px) scale(1.03);
+    background: linear-gradient(120deg, #1e3c72 0%, #232526 100%);
+}
+
+.task-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #4fc3f7;
+    margin-bottom: 10px;
+    word-break: break-word;
+}
+
+.task-desc {
+    color: #b0bec5;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    min-height: 32px;
+}
+
+.task-status {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 1.4rem;
+}
+
+.task-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+}
+
 @media (max-width: 800px) {
     .wrapper, .container {
         padding: 20px 5vw;

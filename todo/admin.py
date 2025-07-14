@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from todo.models import Task, CustomUser
+from todo.models import Task, CustomUser, Profile
 
-admin.site.register(Task)
+admin.site.register([Task, Profile])
 
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):

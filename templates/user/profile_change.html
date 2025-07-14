@@ -1,0 +1,22 @@
+{% extends 'todo/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+    <div class="card-header">
+            <h2 class="fs-2">Change Profile</h2>
+    </div>
+    <hr style="color: #fff">
+    <div class="create-body">
+        <form method="POST" action="{% url 'change_profile' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+                <button type="submit" class="btn btn-primary">Change</button>
+            </form>
+    </div>
+{% endblock %}

@@ -11,7 +11,8 @@
     <h2 style="text-align:center; color:#4fc3f7; margin-bottom:24px;">Profilni o'zgartirish</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form|crispy }}
+        {{ u_form|crispy }}
+        {{ p_form|crispy }}
         <button type="submit" class="btn btn-outline-primary w-100 mt-3">Saqlash</button>
     </form>
 </div>

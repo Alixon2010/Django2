@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from todo.forms import TaskForm, UserForm, ProfileForm, CustomUserChangeForm
 from todo.models import Task, Profile
 
+from django.views.decorators.csrf import csrf_protect
+
 
 @login_required
 def home(request):
@@ -79,7 +81,7 @@ def complete(request, task_id):
 
     return redirect('home')
 
-
+@csrf_protect
 def register(request):
     form = UserForm()
     if request.method == 'POST':

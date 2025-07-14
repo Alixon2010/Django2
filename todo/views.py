@@ -62,9 +62,7 @@ def edit(request, task_id):
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task_object)
         if form.is_valid():
-            task = form.save(commit=False)
-            task.user = request.user
-            task.save()
+            form.save(commit=False)
             return redirect('home')
 
     return render(request, 'todo/edit.html', context={'form': form, 'task': task_object})
@@ -117,17 +115,14 @@ def change_profile(request):
     if request.method == 'POST':
         u_form = CustomUserChangeForm(request.POST, instance=user)
         p_form = ProfileForm(request.POST, request.FILES, instance=profile)
-        if u_form.is_valid():
+        if u_form.is_valid() and p_form.is_valid():
             u_form.save()
-            return redirect('profile')
-        if p_form.is_valid():
             p = p_form.save(commit=False)
             p.user = user
             p.save()
             return redirect('profile')
-    else:
-        u_form = CustomUserChangeForm(instance=user)
-        p_form = ProfileForm(instance=profile)
+    u_form = CustomUserChangeForm(instance=user)
+    p_form = ProfileForm(instance=profile)
         
     return render(request, 'user/profile_change.html', {'u_form': u_form, 'p_form': p_form, 'profile': profile})
 

@@ -1,22 +1,18 @@
 {% extends 'todo/base.html' %}
-{% load static %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block title %}
-    Profile
+    Change Profile
 {% endblock %}
 
 {% block content %}
-    <div class="card-header">
-            <h2 class="fs-2">Change Profile</h2>
-    </div>
-    <hr style="color: #fff">
-    <div class="create-body">
-        <form method="POST" action="{% url 'change_profile' %}" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ u_form|crispy }}
-                {{ p_form|crispy }}
-                <button type="submit" class="btn btn-primary">Change</button>
-            </form>
-    </div>
+<div class="profile-card" style="max-width: 500px; flex-direction: column; align-items: stretch;">
+    <h2 style="text-align:center; color:#4fc3f7; margin-bottom:24px;">Profilni o'zgartirish</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-outline-primary w-100 mt-3">Saqlash</button>
+    </form>
+</div>
 {% endblock %}
